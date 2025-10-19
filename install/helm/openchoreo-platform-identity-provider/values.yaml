@@ -132,16 +132,17 @@ defaultApplication:
   backstageIdpProviderName: "default-idp"
   redirectUrl: "https://localhost:7007/api/auth/default-idp/handler/frame"
   clientId: "openchoreo-platform-idp-client"
+  clientSecret: "openchoreo-platform-idp-client-secret"
 
 userDetails:
   userSchemaName: "engineer"
   users:
-    - username: "admin"
+    - username: "admin@openchoreo.dev"
       password: "Admin@123"
       given_name: "admin"
       family_name: "admin"
       group: "platformEngineer"
-    - username: "dev"
+    - username: "dev@openchoreo.dev"
       password: "Developer@123"
       given_name: "Application"
       family_name: "Developer"
