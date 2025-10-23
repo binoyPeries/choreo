@@ -1003,10 +1003,10 @@ openchoreoApi:
       # @schema
       # -- AppArmor profile type
       type: RuntimeDefault
-  # @schema
-  # type: [null, object]
-  # @schema
-  # -- Pod-level security context
+      # @schema
+      # type: [null, object]
+      # @schema
+      # -- Pod-level security context
 backstage:
   # @schema
   # type: [null, integer]
