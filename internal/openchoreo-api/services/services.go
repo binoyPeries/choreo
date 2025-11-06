@@ -7,6 +7,7 @@ import (
 	"golang.org/x/exp/slog"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
+	authz "github.com/openchoreo/openchoreo/internal/authz/pdp"
 	kubernetesClient "github.com/openchoreo/openchoreo/internal/clients/kubernetes"
 )
 
@@ -23,7 +24,7 @@ type Services struct {
 }
 
 // NewServices creates and initializes all services
-func NewServices(k8sClient client.Client, k8sBPClientMgr *kubernetesClient.KubeMultiClientManager, logger *slog.Logger) *Services {
+func NewServices(k8sClient client.Client, k8sBPClientMgr *kubernetesClient.KubeMultiClientManager, logger *slog.Logger, authzPdpClient *authz.AuthzPDP) *Services {
 	// Create project service
 	projectService := NewProjectService(k8sClient, logger.With("service", "project"))
 

@@ -15,6 +15,7 @@ import (
 
 	"golang.org/x/exp/slog"
 
+	authz "github.com/openchoreo/openchoreo/internal/authz/pdp"
 	kubernetesClient "github.com/openchoreo/openchoreo/internal/clients/kubernetes"
 	k8s "github.com/openchoreo/openchoreo/internal/openchoreo-api/clients"
 	"github.com/openchoreo/openchoreo/internal/openchoreo-api/handlers"
@@ -41,9 +42,10 @@ func main() {
 		baseLogger.Error("Failed to initialize Kubernetes client", slog.Any("error", err))
 		os.Exit(1)
 	}
+	authzPdpClient := new(authz.AuthzPDP)
 
 	// Initialize services
-	services := services.NewServices(k8sClient, kubernetesClient.NewManager(), baseLogger)
+	services := services.NewServices(k8sClient, kubernetesClient.NewManager(), baseLogger, authzPdpClient)
 
 	// Initialize HTTP handlers
 	handler := handlers.New(services, baseLogger.With("component", "handlers"))
